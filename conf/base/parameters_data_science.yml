@@ -1,12 +1,41 @@
 model_options:
-  test_size: 0.2
-  random_state: 3
+  validation_size: 0.2
+  random_state: 42
+  target: LOAN_STATUS
   features:
-    - engines
-    - passenger_capacity
-    - crew
-    - d_check_complete
-    - moon_clearance_complete
-    - iata_approved
-    - company_rating
-    - review_scores_rating
+    numeric:
+      - LOAN_AMOUNT
+      - FUNDED_AMOUNT
+      - FUNDED_AMOUNT_INVESTOR
+      - TERM
+      - INTEREST_RATE
+      - DEBIT_TO_INCOME
+      - DELINQUENCY_TWO_YEARS
+      - INQUIRES_SIX_MONTHS
+      - OPEN_ACCOUNT
+      - PUBLIC_RECORD
+      - REVOLVING_BALANCE
+      - REVOLVING_UTILITIES
+      - TOTAL_ACCOUNTS
+      - TOTAL_RECEIVED_INTEREST
+      - TOTAL_RECEIVED_LATE_FEE
+      - RECOVERIES
+      - COLLECTION_RECOVERY_FEE
+      - COLLECTION_12_MONTHS_MEDICAL
+      - LAST_WEEK_PAY
+      - TOTAL_COLLECTION_AMOUNT
+      - TOTAL_CURRENT_BALANCE
+      - TOTAL_REVOLVING_CREDIT_LIMIT
+      - FUNDED_AMOUNT_TO_PRINCIPAL
+      - FUNDED_AMOUNT_INVESTOR_TO_PRINCIPAL
+      - RECEIVED_INTEREST_TO_PRINCIPAL
+      - RECEIVED_LATE_FEE_TO_PRINCIPAL
+    categorical:
+      - GRADE
+      - SUB_GRADE
+      - HOME_OWNERSHIP
+      - VERIFICATION_STATUS
+      - LOAN_TITLE
+      - INITIAL_LIST_STATUS
+      - APPLICATION_TYPE
+      - IS_CONSOLIDATION

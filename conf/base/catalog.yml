@@ -61,28 +61,32 @@ preprocessed_test_dataset:
 
 feature_engineered_train_dataset:
   type: pandas.FeatherDataset
-  filepath: data/02_intermediate/feature_engineered_train_dataset.feather
+  filepath: data/04_feature/feature_engineered_train_dataset.feather
 
 feature_engineered_test_dataset:
   type: pandas.FeatherDataset
-  filepath: data/02_intermediate/feature_engineered_test_dataset.feather
+  filepath: data/04_feature/feature_engineered_test_dataset.feather
 
-# model_input_table:
-#   type: pandas.ParquetDataset
-#   filepath: data/03_primary/model_input_table.pq
+model_input_train:
+  type: pandas.FeatherDataset
+  filepath: data/05_model_input/model_input_train.feather
 
-# regressor:
-#   type: pickle.PickleDataset
-#   filepath: data/06_models/regressor.pickle
-#   versioned: true
+model_input_validation:
+  type: pandas.FeatherDataset
+  filepath: data/05_model_input/model_input_validation.feather
 
-# metrics:
-#   type: tracking.MetricsDataset
-#   filepath: data/09_tracking/metrics.json
+classifier_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/classifier_model.pickle
+  versioned: false
 
-# companies_columns:
-#   type: tracking.JSONDataset
-#   filepath: data/09_tracking/companies_columns.json
+test_predictions:
+  type: pandas.CSVDataset
+  filepath: data/07_model_output/test_predictions.csv
+
+evaluation_metrics:
+  type: tracking.MetricsDataset
+  filepath: data/09_tracking/evaluation_metrics.json
 
 # shuttle_passenger_capacity_plot_exp:
 #   type: plotly.PlotlyDataset
