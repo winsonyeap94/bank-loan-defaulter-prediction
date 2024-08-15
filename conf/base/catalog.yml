@@ -39,66 +39,72 @@
 # (transcoding), templating and a way to reuse arguments that are frequently repeated. See more here:
 # https://docs.kedro.org/en/stable/data/data_catalog.html
 
-companies:
+train_dataset:
   type: pandas.CSVDataset
-  filepath: data/01_raw/companies.csv
+  filepath: data/01_raw/train.csv
 
-reviews:
+test_dataset:
   type: pandas.CSVDataset
-  filepath: data/01_raw/reviews.csv
+  filepath: data/01_raw/test.csv
 
-shuttles:
-  type: pandas.ExcelDataset
-  filepath: data/01_raw/shuttles.xlsx
-  load_args:
-    engine: openpyxl
+submission_dataset:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/submission.csv
 
-preprocessed_companies:
-  type: pandas.ParquetDataset
-  filepath: data/02_intermediate/preprocessed_companies.pq
+preprocessed_train_dataset:
+  type: pandas.FeatherDataset
+  filepath: data/02_intermediate/preprocessed_train_dataset.feather
 
-preprocessed_shuttles:
-  type: pandas.ParquetDataset
-  filepath: data/02_intermediate/preprocessed_shuttles.pq
+preprocessed_test_dataset:
+  type: pandas.FeatherDataset
+  filepath: data/02_intermediate/preprocessed_test_dataset.feather
 
-model_input_table:
-  type: pandas.ParquetDataset
-  filepath: data/03_primary/model_input_table.pq
+feature_engineered_train_dataset:
+  type: pandas.FeatherDataset
+  filepath: data/02_intermediate/feature_engineered_train_dataset.feather
 
-regressor:
-  type: pickle.PickleDataset
-  filepath: data/06_models/regressor.pickle
-  versioned: true
+feature_engineered_test_dataset:
+  type: pandas.FeatherDataset
+  filepath: data/02_intermediate/feature_engineered_test_dataset.feather
 
-metrics:
-  type: tracking.MetricsDataset
-  filepath: data/09_tracking/metrics.json
+# model_input_table:
+#   type: pandas.ParquetDataset
+#   filepath: data/03_primary/model_input_table.pq
 
-companies_columns:
-  type: tracking.JSONDataset
-  filepath: data/09_tracking/companies_columns.json
+# regressor:
+#   type: pickle.PickleDataset
+#   filepath: data/06_models/regressor.pickle
+#   versioned: true
 
-shuttle_passenger_capacity_plot_exp:
-  type: plotly.PlotlyDataset
-  filepath: data/08_reporting/shuttle_passenger_capacity_plot_exp.json
-  versioned: true
-  plotly_args:
-    type: bar
-    fig:
-      x: shuttle_type
-      y: passenger_capacity
-      orientation: h
-    layout:
-      xaxis_title: Shuttles
-      yaxis_title: Average passenger capacity
-      title: Shuttle Passenger capacity
+# metrics:
+#   type: tracking.MetricsDataset
+#   filepath: data/09_tracking/metrics.json
 
-shuttle_passenger_capacity_plot_go:
-  type: plotly.JSONDataset
-  filepath: data/08_reporting/shuttle_passenger_capacity_plot_go.json
-  versioned: true
+# companies_columns:
+#   type: tracking.JSONDataset
+#   filepath: data/09_tracking/companies_columns.json
 
-dummy_confusion_matrix:
-  type: matplotlib.MatplotlibWriter
-  filepath: data/08_reporting/dummy_confusion_matrix.png
-  versioned: true
+# shuttle_passenger_capacity_plot_exp:
+#   type: plotly.PlotlyDataset
+#   filepath: data/08_reporting/shuttle_passenger_capacity_plot_exp.json
+#   versioned: true
+#   plotly_args:
+#     type: bar
+#     fig:
+#       x: shuttle_type
+#       y: passenger_capacity
+#       orientation: h
+#     layout:
+#       xaxis_title: Shuttles
+#       yaxis_title: Average passenger capacity
+#       title: Shuttle Passenger capacity
+
+# shuttle_passenger_capacity_plot_go:
+#   type: plotly.JSONDataset
+#   filepath: data/08_reporting/shuttle_passenger_capacity_plot_go.json
+#   versioned: true
+
+# dummy_confusion_matrix:
+#   type: matplotlib.MatplotlibWriter
+#   filepath: data/08_reporting/dummy_confusion_matrix.png
+#   versioned: true

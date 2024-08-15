@@ -38,3 +38,6 @@ attr = "bank_loan_defaulter_prediction.__version__"
 [tool.setuptools.packages.find]
 where = [ "src",]
 namespaces = false
+
+[tool.kedro_telemetry]
+project_id = "dcb429d8660649b2889a5949fe2f219a"
