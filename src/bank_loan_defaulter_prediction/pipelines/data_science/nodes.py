@@ -2,10 +2,12 @@ import logging
 from typing import Dict, Tuple
 
 import pandas as pd
+from lightgbm import LGBMClassifier
 from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import roc_auc_score, accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
@@ -47,7 +49,9 @@ def train_model(train_df: pd.DataFrame, parameters: Dict) -> Pipeline:
     # Create the final pipeline
     model_pipeline = Pipeline(steps=[
         ('preprocessor', preprocessor_pipeline),
-        ('classifier', LogisticRegression(random_state=parameters['random_state']))
+        # ('classifier', LogisticRegression(random_state=parameters['random_state'])),
+        # ('classifier', RandomForestClassifier(random_state=parameters['random_state'])),
+        ('classifier', LGBMClassifier(random_state=parameters['random_state'])),
     ])
     
     input_features = parameters['features']['numeric'] + parameters['features']['categorical']
