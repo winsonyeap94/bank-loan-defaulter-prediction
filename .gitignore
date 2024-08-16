@@ -1,6 +1,10 @@
 ##########################
 # KEDRO PROJECT
 
+# Ignore local session
+session_store.db
+/.viz/stats.json
+
 # ignore all local configuration
 conf/local/**
 !conf/local/.gitkeep

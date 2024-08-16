@@ -80,6 +80,14 @@ classifier_model:
   filepath: data/06_models/classifier_model.pickle
   versioned: false
 
+train_predictions:
+  type: pandas.CSVDataset
+  filepath: data/07_model_output/train_predictions.csv
+
+validation_predictions:
+  type: pandas.CSVDataset
+  filepath: data/07_model_output/validation_predictions.csv
+
 test_predictions:
   type: pandas.CSVDataset
   filepath: data/07_model_output/test_predictions.csv
@@ -88,27 +96,12 @@ evaluation_metrics:
   type: tracking.MetricsDataset
   filepath: data/09_tracking/evaluation_metrics.json
 
-# shuttle_passenger_capacity_plot_exp:
-#   type: plotly.PlotlyDataset
-#   filepath: data/08_reporting/shuttle_passenger_capacity_plot_exp.json
-#   versioned: true
-#   plotly_args:
-#     type: bar
-#     fig:
-#       x: shuttle_type
-#       y: passenger_capacity
-#       orientation: h
-#     layout:
-#       xaxis_title: Shuttles
-#       yaxis_title: Average passenger capacity
-#       title: Shuttle Passenger capacity
+viz_roc_curve:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/viz_roc_curve.png
+  versioned: false
 
-# shuttle_passenger_capacity_plot_go:
-#   type: plotly.JSONDataset
-#   filepath: data/08_reporting/shuttle_passenger_capacity_plot_go.json
-#   versioned: true
-
-# dummy_confusion_matrix:
-#   type: matplotlib.MatplotlibWriter
-#   filepath: data/08_reporting/dummy_confusion_matrix.png
-#   versioned: true
+viz_confusion_matrix:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/viz_confusion_matrix.png
+  versioned: false

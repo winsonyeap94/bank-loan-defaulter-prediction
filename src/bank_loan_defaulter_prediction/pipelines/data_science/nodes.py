@@ -57,7 +57,7 @@ def train_model(train_df: pd.DataFrame, parameters: Dict) -> Pipeline:
 
 def evaluate_model(
     classifier_model: Pipeline, train_df: pd.DataFrame, validation_df: pd.DataFrame, parameters: Dict
-) -> Dict[str, float]:
+) -> Tuple:
     """
     Calculates and logs the classification metrics.
     """
@@ -99,7 +99,7 @@ def evaluate_model(
     _logger.info(f"Accuracy: {validation_metrics['accuracy']:.3f}")
     _logger.info(f"F1 Score: {validation_metrics['f1']:.3f}")
     
-    return combined_metrics
+    return combined_metrics, train_df, validation_df
 
 
 def predict_on_test_dataset(
